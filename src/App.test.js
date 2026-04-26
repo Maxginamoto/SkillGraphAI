@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { fireEvent, render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("renders the skill strength advisor", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByText(/Skill Strength Advisor/i)).toBeInTheDocument();
+  expect(screen.getByLabelText(/Engineering domain/i)).toBeInTheDocument();
+  expect(screen.getByLabelText(/CV or skillset text/i)).toBeInTheDocument();
+  expect(screen.queryByLabelText(/Upload CV file/i)).not.toBeInTheDocument();
+
+  fireEvent.click(screen.getByRole("radio", { name: /CV file/i }));
+  expect(screen.getByLabelText(/Upload CV file/i)).toBeInTheDocument();
+  expect(screen.queryByLabelText(/CV or skillset text/i)).not.toBeInTheDocument();
 });
