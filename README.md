@@ -8,7 +8,6 @@ A simple Create React App project for assessing a student's engineering domain, 
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
 
 ## Build
 
